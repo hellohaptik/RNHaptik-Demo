@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">RNHaptik</string>
+    
+    <string name="haptik_base_url">https://staging.hellohaptik.com/</string>
+    <string name="haptik_client_id">b7ae8005124fdff9023c7a5fb8e85274eb209a06</string>
+    <string name="haptik_business_id">5025</string>
+</resources>
