@@ -1,0 +1,9 @@
+<resources>
+  <string name="app_name">haptik_rn</string>
+  <string name="expo_system_ui_user_interface_style" translatable="false">automatic</string>
+  <string name="expo_splash_screen_resize_mode" translatable="false">contain</string>
+  <string name="expo_splash_screen_status_bar_translucent" translatable="false">false</string>
+  <string name="haptik_base_url">https://api.haptikapi.com/</string>
+  <string name="haptik_client_id">98f59cf7c4576d889a9be66408ed3c4341876f30</string>
+  <string name="haptik_business_id">6640</string>
+</resources>
