@@ -1,5 +1,6 @@
 package com.anonymous.haptik_rn;
 import android.util.Log;
+import android.webkit.WebView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -31,6 +32,7 @@ public class GlobalManager extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void loadHaptikConversation() {
+        WebView.setWebContentsDebuggingEnabled(true);
         InitData initData = new InitData();     //HaptikConfig
         initData.setPrimaryColor("#D9243D");     //HaptikConfig
         HaptikSDK.INSTANCE.init(reactContext, initData, s -> null);     //HaptikConfig

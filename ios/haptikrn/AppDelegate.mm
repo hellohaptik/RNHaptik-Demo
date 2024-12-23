@@ -2,18 +2,37 @@
 
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTLinkingManager.h>
-
+#import <React/RCTBridge.h>
+#import <React/RCTRootView.h>
+//#import <HPWebKit/HPWebKit.h>
+#import <HPWebKit/HPWebKit-Swift.h>
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   self.moduleName = @"main";
 
-  // You can add your custom initial props in the dictionary below.
-  // They will be passed down to the ViewController used by React Native.
-  self.initialProps = @{};
 
-  return [super application:application didFinishLaunchingWithOptions:launchOptions];
+// RCTBridge *bridge = [self.reactDelegate createBridgeWithDelegate:self launchOptions:launchOptions];
+// RCTRootView *rootView = [self.reactDelegate createRootViewWithBridge:bridge
+//                                                  moduleName:@"RNHaptik"
+//                                           initialProperties:nil];
+//
+// if (@available(iOS 13.0, *)) {
+//     rootView.backgroundColor = [UIColor systemBackgroundColor];
+// } else {
+//     rootView.backgroundColor = [UIColor whiteColor];
+// }
+
+  self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+  UIViewController *rootViewController = [self.reactDelegate createRootViewController];
+//  rootViewController.view = rootView;
+  UINavigationController *navcontroller = [[UINavigationController alloc] initWithRootViewController:rootViewController];
+  self.window.rootViewController = navcontroller;
+  [self.window makeKeyAndVisible];
+  [HPKit.sharedSDK setup];
+  [super application:application didFinishLaunchingWithOptions:launchOptions];
+  return YES;
 }
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
