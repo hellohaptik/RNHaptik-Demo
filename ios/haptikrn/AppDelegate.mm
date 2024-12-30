@@ -11,25 +11,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   self.moduleName = @"main";
-
-
-// RCTBridge *bridge = [self.reactDelegate createBridgeWithDelegate:self launchOptions:launchOptions];
-// RCTRootView *rootView = [self.reactDelegate createRootViewWithBridge:bridge
-//                                                  moduleName:@"RNHaptik"
-//                                           initialProperties:nil];
-//
-// if (@available(iOS 13.0, *)) {
-//     rootView.backgroundColor = [UIColor systemBackgroundColor];
-// } else {
-//     rootView.backgroundColor = [UIColor whiteColor];
-// }
-
-  self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-  UIViewController *rootViewController = [self.reactDelegate createRootViewController];
-//  rootViewController.view = rootView;
-  UINavigationController *navcontroller = [[UINavigationController alloc] initWithRootViewController:rootViewController];
-  self.window.rootViewController = navcontroller;
-  [self.window makeKeyAndVisible];
   [HPKit.sharedSDK setup];
   [super application:application didFinishLaunchingWithOptions:launchOptions];
   return YES;

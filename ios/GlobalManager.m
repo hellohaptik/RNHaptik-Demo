@@ -21,29 +21,17 @@ RCT_EXPORT_MODULE();
 
 RCT_EXPORT_METHOD(loadHaptikConversation){
   
-  UINavigationController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController as UINavigationController;
-  
-    @try{
-      NSLog(@"---LOG Before HPKIT ---k");
+  UINavigationController *rootVC = [UIApplication sharedApplication].delegate.window.rootViewController;
+  if ([rootVC isKindOfClass:[UINavigationController class]]) {
+      UINavigationController *navigationController = (UINavigationController *)rootVC;
+    NSLog(@"---LOG Before HPKIT ---k");
 
-      [HPKit.sharedSDK loadGuestConversationWithLaunchController:rootViewController.presentedViewController customData:nil error:nil];
+    [HPKit.sharedSDK loadGuestConversationWithLaunchController:rootVC.viewControllers.lastObject customData:nil error:nil];
+    NSLog(@"---LOG After HPKIT ---");
 
 
-      NSLog(@"---LOG After HPKIT ---");
-//      
-//      UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"My Alert"
-//                                 message:@"This is an alert."
-//                                 preferredStyle:UIAlertControllerStyleAlert];
-//
-//      UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-//                                     handler:^(UIAlertAction * action) {}];
-//
-//      [alert addAction:defaultAction];
-//      [rootViewController presentViewController:alert animated:YES completion:nil];
-      
-    }  @catch (NSException *exception) {
-      NSLog(@"---LOG exception ---%@", exception);
-    }
+      // Now you can work with navigationController
+  } 
   
 };
 
