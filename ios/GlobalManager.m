@@ -18,23 +18,26 @@ RCT_EXPORT_MODULE();
 
 - (dispatch_queue_t)methodQueue
 {
-    return dispatch_get_main_queue();
+  return dispatch_get_main_queue();
 }
 
 RCT_EXPORT_METHOD(loadHaptikConversation){
-  
-  UINavigationController *rootVC = [UIApplication sharedApplication].delegate.window.rootViewController;
-  if ([rootVC isKindOfClass:[UINavigationController class]]) {
-      UINavigationController *navigationController = (UINavigationController *)rootVC;
-    NSLog(@"---LOG Before HPKIT ---k");
+  NSLog(@"---LOG Before HPKIT ---k");
 
-    [HPKit.sharedSDK loadGuestConversationWithLaunchController:rootVC.viewControllers.lastObject customData:nil error:nil];
-    NSLog(@"---LOG After HPKIT ---");
+  UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
+  UINavigationController *navigationController;
+  // Check if the root view controller is a UINavigationController
+  if ([rootViewController isKindOfClass:[UINavigationController class]]) {
+      navigationController = (UINavigationController *)rootViewController;
+      // Now you have the navigation controller
+    [HPKit.sharedSDK loadGuestConversationWithLaunchController:navigationController customData:nil error:nil];
 
+      NSLog(@"Successfully retrieved UINavigationController");
+  } else {
 
-      // Now you can work with navigationController
+      NSLog(@"Root view controller is not a UINavigationController");
   }
-  
+
 };
 
 RCT_EXPORT_METHOD(logoutHaptik){

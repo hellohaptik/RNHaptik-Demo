@@ -51,5 +51,17 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+  <key>HaptikLib</key>
+  <dict>
+    <key>baseUrl</key>
+    <string>https://api.haptikapi.com/</string>
+    <key>businessID</key>
+    <string>6640</string>
+    <key>clientID</key>
+    <string>98f59cf7c4576d889a9be66408ed3c4341876f30</string>
+    <key>runEnvironment</key>
+    <string>1</string>
+  </dict>
 </dict>
+
 </plist>
